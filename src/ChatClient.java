@@ -15,14 +15,19 @@ public class ChatClient extends JFrame{
 	private JTextField sendMessageBox;
 	
 	private JTextArea showMessageBox;
-	private JButton sendButton;
-	private JButton disconnectButton;
+	//private JButton sendButton;
+	//private JButton disconnectButton;
 	private JTextArea showConnectorBox;
-	private JButton connectButton;
+	//private JButton connectButton;
+	ImageButton sendButton;
+	ImageButton connectButton;
+	ImageButton disconnectButton;
+	//JPanel panel;
+	//JPanel panel_1;
+	ImagePanel panel;
+	ImagePanel panel_1;
 	
-	
-	JPanel panel;
-	JPanel panel_1;
+	Font font;
 	
 	private Socket echoSocket;
 	private PrintStream socketOut;
@@ -33,30 +38,79 @@ public class ChatClient extends JFrame{
 	
 	public ChatClient() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		font = new Font("맑은 고딕", font.BOLD, 50);
 		
 		getContentPane().setLayout(null);
 		setSize(1700, 950);
-		panel = new JPanel();
+		
+		
+		//panel_1 = new JPanel();
+		panel_1 = new ImagePanel(new ImageIcon("./image/bg4.png").getImage());
+		panel_1.setBounds(0, 0, 1700, 950);
+		getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		serverAddr = new JTextField();
+		serverAddr.setBounds(840, 540, 300, 100);
+		panel_1.add(serverAddr);
+		serverAddr.setColumns(10);
+		serverAddr.setFont(font);
+		
+		portNo = new JTextField();
+		portNo.setBounds(840, 640, 300, 100);
+		panel_1.add(portNo);
+		portNo.setColumns(10);
+		portNo.setFont(font);
+		
+		talkName = new JTextField();
+		talkName.setBounds(840, 740, 300, 100);
+		panel_1.add(talkName);
+		talkName.setFont(font);
+		talkName.setColumns(10);
+		
+		//JLabel lblNewLabel = new JLabel("Server IP");
+		ImageLabel lblNewLabel = new ImageLabel(new ImageIcon("./image/serverip.png").getImage());
+		lblNewLabel.setBounds(520, 540, 300, 100);
+		panel_1.add(lblNewLabel);
+		
+		//JLabel lblNewLabel_1 = new JLabel("Port Num");
+		ImageLabel lblNewLabel_1 = new ImageLabel(new ImageIcon("./image/portnum.png").getImage());
+		lblNewLabel_1.setBounds(520, 640, 300, 100);
+		panel_1.add(lblNewLabel_1);
+		
+		//JLabel lblNewLabel_2 = new JLabel("Name");
+		ImageLabel lblNewLabel_2 = new ImageLabel(new ImageIcon("./image/name.png").getImage());
+		lblNewLabel_2.setBounds(520, 740, 300, 100);
+		panel_1.add(lblNewLabel_2);
+		
+		//connectButton = new JButton("Go");
+		connectButton = new ImageButton(new ImageIcon("./image/start.png").getImage());
+		connectButton.setBounds(1200, 740, 300, 100);
+		panel_1.add(connectButton);
+		
+		//panel = new JPanel();
+		panel = new ImagePanel(new ImageIcon("./image/bg4.png").getImage());
 		panel.setBounds(0, 0, 1700, 950);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		showMessageBox = new JTextArea();
-		showMessageBox.setBounds(143, 69, 387, 254);
+		showMessageBox.setBounds(300, 80, 1000, 700);
 		panel.add(showMessageBox);
 		
 		sendMessageBox = new JTextField();
-		sendMessageBox.setBounds(143, 346, 387, 21);
+		sendMessageBox.setBounds(300, 800, 1000, 80);
 		panel.add(sendMessageBox);
 		sendMessageBox.setColumns(10);
 		
-		sendButton = new JButton("SEND");
-		sendButton.setBounds(542, 345, 97, 23);
+		//sendButton = new JButton("SEND");
+		sendButton = new ImageButton(new ImageIcon("./image/send.png").getImage());
+		sendButton.setBounds(1350, 800, 100, 80);
 		panel.add(sendButton);
 		
-		disconnectButton = new JButton("EXIT");
-		disconnectButton.setBounds(12, 310, 97, 23);
+		//disconnectButton = new JButton("EXIT");
+		disconnectButton = new ImageButton(new ImageIcon("./image/exit.png").getImage());
+		disconnectButton.setBounds(1500, 0, 200, 80);
 		panel.add(disconnectButton);
 		
 		showConnectorBox = new JTextArea();
@@ -64,47 +118,18 @@ public class ChatClient extends JFrame{
 		panel.add(showConnectorBox);
 		
 		
-		//panel_1 = new JPanel();
-		ImagePanel panel_1 = new ImagePanel(new ImageIcon("./image/bg4.png").getImage());
-		panel_1.setBounds(0, 0, 1700, 950);
-		getContentPane().add(panel_1);
-		panel_1.setLayout(null);
 		
-		serverAddr = new JTextField();
-		serverAddr.setBounds(153, 76, 116, 21);
-		panel_1.add(serverAddr);
-		serverAddr.setColumns(10);
-		
-		portNo = new JTextField();
-		portNo.setBounds(153, 120, 116, 21);
-		panel_1.add(portNo);
-		portNo.setColumns(10);
-		
-		talkName = new JTextField();
-		talkName.setBounds(153, 167, 116, 21);
-		panel_1.add(talkName);
-		talkName.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("Server IP");
-		lblNewLabel.setBounds(58, 79, 57, 15);
-		panel_1.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Port Num");
-		lblNewLabel_1.setBounds(58, 123, 57, 15);
-		panel_1.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("Name");
-		lblNewLabel_2.setBounds(58, 170, 57, 15);
-		panel_1.add(lblNewLabel_2);
-		
-		connectButton = new JButton("Go");
-		connectButton.setBounds(58, 206, 266, 58);
-		panel_1.add(connectButton);
 		panel_1.setVisible(true);
 		panel.setVisible(false);
 		
+		
+		
 		connectButton.addActionListener(new ActionListener() {
 	         public void actionPerformed(java.awt.event.ActionEvent evt) {
+	        	lblNewLabel.setVisible(false);
+	     		lblNewLabel_1.setVisible(false);
+	     		lblNewLabel_2.setVisible(false);
+	     		
 	            connectButtonActionPerformed(evt);
 	         }
 	      });
@@ -113,6 +138,34 @@ public class ChatClient extends JFrame{
 	      sendButton.addActionListener(sendMsgHandler);
 	      sendMessageBox.addActionListener(sendMsgHandler);
 	      talkName.requestFocus();
+	}
+	class ImageButton extends JButton {
+		  private Image img;
+		  
+		  public ImageButton(Image img) {
+		      this.img = img;
+		      setSize(new Dimension(img.getWidth(null), img.getHeight(null)));
+		      setPreferredSize(new Dimension(img.getWidth(null), img.getHeight(null)));
+		      setLayout(null);
+		  }
+		  
+		  public void paintComponent(Graphics g) {
+		      g.drawImage(img, 3, 0, null);
+		  }
+	}
+	class ImageLabel extends JLabel {
+		  private Image img;
+		  
+		  public ImageLabel(Image img) {
+		      this.img = img;
+		      setSize(new Dimension(img.getWidth(null), img.getHeight(null)));
+		      setPreferredSize(new Dimension(img.getWidth(null), img.getHeight(null)));
+		      setLayout(null);
+		  }
+		  
+		  public void paintComponent(Graphics g) {
+		      g.drawImage(img, 3, 0, null);
+		  }
 	}
 	class ImagePanel extends JPanel {
 		  private Image img;
@@ -147,9 +200,18 @@ public class ChatClient extends JFrame{
 	            
 	            sendMessageBox.requestFocus();
 	            connectButton.setEnabled(false);
+	            connectButton.setVisible(false);
+	            
+	            serverAddr.setVisible(false);
+	     		portNo.setVisible(false);
+	     		talkName.setVisible(false);
+	     		
+	            
 	            disconnectButton.setEnabled(true);;
 	            sendButton.setEnabled(true);;
 	            panel.setVisible(true);
+	            sendButton.setVisible(true);
+	            disconnectButton.setVisible(true);
 	            panel_1.setVisible(false);
 	         }
 	         else {
@@ -194,7 +256,7 @@ public class ChatClient extends JFrame{
 	            }
 	         }
 	         catch(Exception e) {
-	            showMessageBox.append("         \n");
+	            showMessageBox.append("erorr\n");
 	         }
 	      }
 	   }
