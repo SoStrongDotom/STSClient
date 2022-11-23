@@ -28,6 +28,7 @@ public class ChatClient extends JFrame{
 	
 	
 	public ChatClient() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		setSize(800, 600);
 		panel = new JPanel();
@@ -131,17 +132,17 @@ public class ChatClient extends JFrame{
 	            panel_1.setVisible(false);
 	         }
 	         else {
-	            showMessageBox.append(" ߸    Server Դϴ . \n");
+	            showMessageBox.append("not equals message\n");
 	         }
 	      }
 	      catch(UnknownHostException e) {
-	         showMessageBox.append("Server        ϴ .\n");
+	         showMessageBox.append("Serverexception e.\n");
 	      }
 	      catch(IOException e) {
-	         showMessageBox.append("      Error.\n");
+	         showMessageBox.append("IOexception e.\n");
 	      }
 	      catch(Exception e) {
-	         showMessageBox.append("             ϴ 1. \n");
+	         showMessageBox.append("exception e. \n");
 	      }
 	   }
 	   class disConnectHandler implements ActionListener {
@@ -156,7 +157,7 @@ public class ChatClient extends JFrame{
 	            sendButton.setEnabled(false);
 	         }
 	         catch(IOException e) {
-	            showMessageBox.append("      Error.\n");
+	            showMessageBox.append("Error.\n");
 	         }
 	      }
 	   }
@@ -194,7 +195,7 @@ public class ChatClient extends JFrame{
 	            }
 	         }
 	         catch(Exception e) {
-	            showMessageBox.append("             ϴ .\n");
+	            showMessageBox.append("erorr.\n");
 	         }
 	      }
 	   }
