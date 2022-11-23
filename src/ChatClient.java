@@ -30,7 +30,7 @@ public class ChatClient extends JFrame{
 	public ChatClient() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		setSize(800, 600);
+		setSize(1700, 950);
 		panel = new JPanel();
 		panel.setBounds(0, 0, 701, 401);
 		getContentPane().add(panel);
@@ -59,7 +59,7 @@ public class ChatClient extends JFrame{
 		
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(149, 47, 388, 292);
+		panel_1.setBounds(650, 250, 388, 400);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
