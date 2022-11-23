@@ -15,6 +15,8 @@ public class ChatClient extends JFrame{
 	private JTextField sendMessageBox;
 	
 	private JTextArea showMessageBox;
+	private JScrollPane scrollPane;
+
 	//private JButton sendButton;
 	//private JButton disconnectButton;
 	private JTextArea showConnectorBox;
@@ -28,6 +30,7 @@ public class ChatClient extends JFrame{
 	ImagePanel panel_1;
 	
 	Font font;
+	Font font2;
 	
 	private Socket echoSocket;
 	private PrintStream socketOut;
@@ -39,7 +42,7 @@ public class ChatClient extends JFrame{
 	public ChatClient() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		font = new Font("맑은 고딕", font.BOLD, 50);
-		
+		font2 = new Font("맑은 고딕", font.BOLD, 30);
 		getContentPane().setLayout(null);
 		setSize(1700, 950);
 		
@@ -89,17 +92,24 @@ public class ChatClient extends JFrame{
 		panel_1.add(connectButton);
 		
 		//panel = new JPanel();
-		panel = new ImagePanel(new ImageIcon("./image/bg4.png").getImage());
+		panel = new ImagePanel(new ImageIcon("./image/bg4_2.png").getImage());
 		panel.setBounds(0, 0, 1700, 950);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		showMessageBox = new JTextArea();
 		showMessageBox.setBounds(300, 80, 1000, 700);
+		showMessageBox.setFont(font2);
 		panel.add(showMessageBox);
+		
+		scrollPane = new JScrollPane(showMessageBox, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	    scrollPane.setBounds(300, 80, 1000, 700);
+	    panel.add(scrollPane);
+
 		
 		sendMessageBox = new JTextField();
 		sendMessageBox.setBounds(300, 800, 1000, 80);
+		sendMessageBox.setFont(font2);
 		panel.add(sendMessageBox);
 		sendMessageBox.setColumns(10);
 		
