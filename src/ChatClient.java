@@ -4,6 +4,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.*;
 import java.io.*;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class ChatClient extends JFrame{
 	private JTextField serverAddr;
@@ -17,6 +20,7 @@ public class ChatClient extends JFrame{
 	private JTextArea showConnectorBox;
 	private JButton connectButton;
 	
+	
 	JPanel panel;
 	JPanel panel_1;
 	
@@ -29,10 +33,12 @@ public class ChatClient extends JFrame{
 	
 	public ChatClient() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
 		getContentPane().setLayout(null);
 		setSize(1700, 950);
 		panel = new JPanel();
-		panel.setBounds(0, 0, 701, 401);
+		panel.setBounds(0, 0, 1700, 950);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -58,8 +64,9 @@ public class ChatClient extends JFrame{
 		panel.add(showConnectorBox);
 		
 		
-		panel_1 = new JPanel();
-		panel_1.setBounds(650, 250, 388, 400);
+		//panel_1 = new JPanel();
+		ImagePanel panel_1 = new ImagePanel(new ImageIcon("./image/bg4.png").getImage());
+		panel_1.setBounds(0, 0, 1700, 950);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -107,7 +114,21 @@ public class ChatClient extends JFrame{
 	      sendMessageBox.addActionListener(sendMsgHandler);
 	      talkName.requestFocus();
 	}
-
+	class ImagePanel extends JPanel {
+		  private Image img;
+		  
+		  public ImagePanel(Image img) {
+		      this.img = img;
+		      setSize(new Dimension(img.getWidth(null), img.getHeight(null)));
+		      setPreferredSize(new Dimension(img.getWidth(null), img.getHeight(null)));
+		      setLayout(null);
+		  }
+		  
+		  public void paintComponent(Graphics g) {
+		      g.drawImage(img, 3, 0, null);
+		  }
+	}
+		 
 	private void connectButtonActionPerformed(java.awt.event.ActionEvent evt) {
 	      String strMsg;
 	      try {
