@@ -15,8 +15,14 @@ public class ChatClient extends JFrame{
 	private JTextField sendMessageBox;
 	
 	private JTextArea showMessageBox;
+<<<<<<< HEAD
 	//private JButton sendButton;
 	//private JButton disconnectButton;
+=======
+	private JScrollPane scrollPane;
+	private JButton sendButton;
+	private JButton disconnectButton;
+>>>>>>> f466cf52fc2336658c0ce8456d34d7cd045d351c
 	private JTextArea showConnectorBox;
 	//private JButton connectButton;
 	ImageButton sendButton;
@@ -42,6 +48,38 @@ public class ChatClient extends JFrame{
 		
 		getContentPane().setLayout(null);
 		setSize(1700, 950);
+<<<<<<< HEAD
+=======
+		panel = new JPanel();
+		panel.setBounds(0, 0, 1700, 950);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		showMessageBox = new JTextArea();
+		showMessageBox.setBounds(143, 69, 387, 254);
+		panel.add(showMessageBox);
+		
+		scrollPane = new JScrollPane(showMessageBox, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	    scrollPane.setBounds(143, 69, 387, 254);
+	    panel.add(scrollPane);
+		
+		sendMessageBox = new JTextField();
+		sendMessageBox.setBounds(143, 346, 387, 21);
+		panel.add(sendMessageBox);
+		sendMessageBox.setColumns(10);
+		
+		sendButton = new JButton("SEND");
+		sendButton.setBounds(542, 345, 97, 23);
+		panel.add(sendButton);
+		
+		disconnectButton = new JButton("EXIT");
+		disconnectButton.setBounds(12, 310, 97, 23);
+		panel.add(disconnectButton);
+		
+		showConnectorBox = new JTextArea();
+		showConnectorBox.setBounds(551, 94, 138, 229);
+		panel.add(showConnectorBox);
+>>>>>>> f466cf52fc2336658c0ce8456d34d7cd045d351c
 		
 		
 		//panel_1 = new JPanel();
