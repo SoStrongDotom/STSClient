@@ -15,6 +15,7 @@ public class ChatClient extends JFrame{
 	private JTextField sendMessageBox;
 	
 	private JTextArea showMessageBox;
+	private JScrollPane scrollPane;
 	private JButton sendButton;
 	private JButton disconnectButton;
 	private JTextArea showConnectorBox;
@@ -45,6 +46,10 @@ public class ChatClient extends JFrame{
 		showMessageBox = new JTextArea();
 		showMessageBox.setBounds(143, 69, 387, 254);
 		panel.add(showMessageBox);
+		
+		scrollPane = new JScrollPane(showMessageBox, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	    scrollPane.setBounds(143, 69, 387, 254);
+	    panel.add(scrollPane);
 		
 		sendMessageBox = new JTextField();
 		sendMessageBox.setBounds(143, 346, 387, 21);
