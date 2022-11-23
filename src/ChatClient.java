@@ -37,6 +37,52 @@ public class ChatClient extends JFrame{
 		
 		getContentPane().setLayout(null);
 		setSize(1700, 950);
+		
+		
+		//panel_1 = new JPanel();
+		ImagePanel panel_1 = new ImagePanel(new ImageIcon("./image/bg4.png").getImage());
+		panel_1.setBounds(0, 0, 1700, 950);
+		getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		serverAddr = new JTextField();
+		serverAddr.setBounds(869, 602, 116, 21);
+		panel_1.add(serverAddr);
+		serverAddr.setColumns(10);
+		
+		portNo = new JTextField();
+		portNo.setBounds(869, 662, 116, 21);
+		panel_1.add(portNo);
+		portNo.setColumns(10);
+		
+		talkName = new JTextField();
+		talkName.setBounds(869, 726, 116, 21);
+		panel_1.add(talkName);
+		talkName.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Server IP");
+		lblNewLabel.setBounds(696, 605, 57, 15);
+		panel_1.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Port Num");
+		lblNewLabel_1.setBounds(696, 665, 57, 15);
+		panel_1.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Name");
+		lblNewLabel_2.setBounds(696, 729, 57, 15);
+		panel_1.add(lblNewLabel_2);
+		
+		connectButton = new JButton("Go");
+		connectButton.setBounds(696, 773, 266, 58);
+		panel_1.add(connectButton);
+		panel_1.setVisible(true);
+		
+		connectButton.addActionListener(new ActionListener() {
+	         public void actionPerformed(java.awt.event.ActionEvent evt) {
+	            connectButtonActionPerformed(evt);
+	         }
+	      });
+		talkName.requestFocus();
 		panel = new JPanel();
 		panel.setBounds(0, 0, 1700, 950);
 		getContentPane().add(panel);
@@ -62,57 +108,11 @@ public class ChatClient extends JFrame{
 		showConnectorBox = new JTextArea();
 		showConnectorBox.setBounds(551, 94, 138, 229);
 		panel.add(showConnectorBox);
-		
-		
-		//panel_1 = new JPanel();
-		ImagePanel panel_1 = new ImagePanel(new ImageIcon("./image/bg4.png").getImage());
-		panel_1.setBounds(0, 0, 1700, 950);
-		getContentPane().add(panel_1);
-		panel_1.setLayout(null);
-		
-		serverAddr = new JTextField();
-		serverAddr.setBounds(153, 76, 116, 21);
-		panel_1.add(serverAddr);
-		serverAddr.setColumns(10);
-		
-		portNo = new JTextField();
-		portNo.setBounds(153, 120, 116, 21);
-		panel_1.add(portNo);
-		portNo.setColumns(10);
-		
-		talkName = new JTextField();
-		talkName.setBounds(153, 167, 116, 21);
-		panel_1.add(talkName);
-		talkName.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("Server IP");
-		lblNewLabel.setBounds(58, 79, 57, 15);
-		panel_1.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Port Num");
-		lblNewLabel_1.setBounds(58, 123, 57, 15);
-		panel_1.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("Name");
-		lblNewLabel_2.setBounds(58, 170, 57, 15);
-		panel_1.add(lblNewLabel_2);
-		
-		connectButton = new JButton("Go");
-		connectButton.setBounds(58, 206, 266, 58);
-		panel_1.add(connectButton);
-		panel_1.setVisible(true);
 		panel.setVisible(false);
-		
-		connectButton.addActionListener(new ActionListener() {
-	         public void actionPerformed(java.awt.event.ActionEvent evt) {
-	            connectButtonActionPerformed(evt);
-	         }
-	      });
 	      disconnectButton.addActionListener(new disConnectHandler());
 	      sendMsgHandler = new sendMessageHandler3();
 	      sendButton.addActionListener(sendMsgHandler);
 	      sendMessageBox.addActionListener(sendMsgHandler);
-	      talkName.requestFocus();
 	}
 	class ImagePanel extends JPanel {
 		  private Image img;
