@@ -115,7 +115,7 @@ public class ChatClient extends JFrame{
 		
 		//sendButton = new JButton("SEND");
 		sendButton = new ImageButton(new ImageIcon("./image/send.png").getImage());
-		sendButton.setBounds(1350, 800, 100, 80);
+		sendButton.setBounds(1350, 800, 200, 80);
 		panel.add(sendButton);
 		
 		//disconnectButton = new JButton("EXIT");
@@ -136,9 +136,9 @@ public class ChatClient extends JFrame{
 		
 		connectButton.addActionListener(new ActionListener() {
 	         public void actionPerformed(java.awt.event.ActionEvent evt) {
-	        	lblNewLabel.setVisible(false);
-	     		lblNewLabel_1.setVisible(false);
-	     		lblNewLabel_2.setVisible(false);
+	        	//lblNewLabel.setVisible(false);
+	     		//lblNewLabel_1.setVisible(false);
+	     		//lblNewLabel_2.setVisible(false);
 	     		
 	            connectButtonActionPerformed(evt);
 	         }
@@ -208,13 +208,13 @@ public class ChatClient extends JFrame{
 	            rec = new SjChatReceiveThread(socketIn, showMessageBox);
 	            rec.start();
 	            
-	            sendMessageBox.requestFocus();
-	            connectButton.setEnabled(false);
-	            connectButton.setVisible(false);
+	            //sendMessageBox.requestFocus();
+	            //connectButton.setEnabled(false);
+	            //connectButton.setVisible(false);
 	            
-	            serverAddr.setVisible(false);
-	     		portNo.setVisible(false);
-	     		talkName.setVisible(false);
+	            //serverAddr.setVisible(false);
+	     		//portNo.setVisible(false);
+	     		//talkName.setVisible(false);
 	     		
 	            
 	            disconnectButton.setEnabled(true);;
@@ -248,6 +248,8 @@ public class ChatClient extends JFrame{
 	            connectButton.setEnabled(true);
 	            disconnectButton.setEnabled(false);
 	            sendButton.setEnabled(false);
+	            panel.setVisible(false);
+	            panel_1.setVisible(true);
 	         }
 	         catch(IOException e) {
 	            showMessageBox.append("Error.\n");
