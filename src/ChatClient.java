@@ -1,3 +1,6 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 
 import java.awt.*;
@@ -38,6 +41,19 @@ public class ChatClient extends JFrame{
 	private sendMessageHandler3 sendMsgHandler;
 	private SjChatReceiveThread rec;
 	
+    public static void Play(String fileName)
+    {
+        try
+        {
+            AudioInputStream ais = AudioSystem.getAudioInputStream(new File(fileName));
+            Clip clip = AudioSystem.getClip();
+            clip.stop();
+            clip.open(ais);
+            clip.start();
+        }
+        catch (Exception ex){
+        }
+    }
 	
 	public ChatClient() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -297,5 +313,7 @@ public class ChatClient extends JFrame{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new ChatClient().setVisible(true);
+		
+		Play("sound/STSBGM.wav");
 	}
 }
