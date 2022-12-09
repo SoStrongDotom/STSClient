@@ -1,6 +1,6 @@
 # Sea Turtle Soup
 
-![image](https://user-images.githubusercontent.com/105546220/206674442-771a63b1-b13d-401b-b342-42aedc58b464.png)
+<img width="1260" alt="스크린샷_20221209_055659" src="https://user-images.githubusercontent.com/105546220/206731098-0dea2a3b-add4-4ad3-a30c-77361df2cde1.png">
 
 ## 1. 프로젝트의 목적 및 용도
 
